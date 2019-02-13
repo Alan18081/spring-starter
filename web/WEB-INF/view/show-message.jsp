@@ -11,6 +11,6 @@
     <title>Message</title>
 </head>
 <body>
-    Your message ${message}
+    <strong>Customer</strong> ${customer.firstName} ${customer.lastName}
 </body>
 </html>
