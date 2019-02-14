@@ -12,5 +12,6 @@
 </head>
 <body>
     <strong>Customer</strong> ${customer.firstName} ${customer.lastName}
+    <i>Course code ${customer.courseCode}</i>
 </body>
 </html>

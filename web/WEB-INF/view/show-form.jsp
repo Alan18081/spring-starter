@@ -21,10 +21,19 @@
     <form:form action="/customers/submit" modelAttribute="customer">
         <p>
             First name: <form:input path="firstName" />
+            <form:errors path="lastName" cssClass="error"/>
         </p>
         <p>
             Last name (*): <form:input path="lastName" />
             <form:errors path="lastName" cssClass="error"/>
+        </p>
+        <p>
+            Age: <form:input path="age" />
+            <form:errors path="age" cssClass="error"/>
+        </p>
+        <p>
+            Course code <form:input path="courseCode" />
+            <form:errors path="courseCode" cssClass="error"/>
         </p>
         <button type="submit">Create customer</button>
     </form:form>
