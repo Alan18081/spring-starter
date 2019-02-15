@@ -1,17 +1,28 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
+import com.alex.spring.db.entities.Instructor;
+import com.alex.spring.db.entities.InstructorDetail;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 public class Jdbc {
     public static void main(String... args) {
-        String url = "jdbc:mysql://localhost:3306/students_app?useSSL=false&serverTimezone=UTC";
-        String user = "root";
-        String password = "root";
+        SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Instructor.class)
+                .addAnnotatedClass(InstructorDetail.class)
+                .buildSessionFactory();
+
+        Session session = sessionFactory.getCurrentSession();
+
         try {
-            System.out.println("Conenction");
-            Connection connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Connection successful");
-        } catch (Exception e) {
-            e.printStackTrace();
+            session.beginTransaction();
+//            session.save(instructor);
+            InstructorDetail instructorDetail = session.get(InstructorDetail.class, 2);
+            System.out.println("Detail: " + instructorDetail);
+            System.out.println("Instructor: " + instructorDetail.getInstructor());
+            session.getTransaction().commit();
+        } finally {
+            sessionFactory.close();
         }
     }
 }
