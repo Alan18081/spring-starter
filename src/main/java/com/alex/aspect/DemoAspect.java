@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DemoAspect {
 
-    @Before("execution( * com.alex.aspect.*.*Account(Account))")
+    @Before("execution( * com.alex.aspect.*.*Account(com.alex.aspect.Account, ..))")
     public void beforeAddAccount() {
         System.out.println("Before some stuff");
     }
