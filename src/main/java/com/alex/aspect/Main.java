@@ -9,8 +9,8 @@ public class Main {
         AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
         MemberShipDAO memberShipDAO = context.getBean("memberShipDAO", MemberShipDAO.class);
         accountDAO.addAccount(new Account(), true);
-        accountDAO.updateAccount();
-        memberShipDAO.addAccount();
+        memberShipDAO.setName("Hello");
+        System.out.println(memberShipDAO.getName());
         context.close();
     }
 }
